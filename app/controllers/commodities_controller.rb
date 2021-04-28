@@ -4,13 +4,13 @@ class CommoditiesController < ApplicationController
   # GET /commodities
   def index
     @commodities = Commodity.all
-
-    render json: @commodities
+    # the .to_json makes the connection between the two
+    render json: @commodities.to_json(include: :traders)
   end
 
   # GET /commodities/1
   def show
-    render json: @commodity
+    render json: @commodity.to_json(include: :traders)
   end
 
   # POST /commodities
